@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "printer.title.show"|trans({'%printName%': printer.sn}) }}{% endblock %}
+{% block menuActive_printerList %}active{% endblock menuActive_printerList %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="t-chart" data-bs-toggle="tab" href="#tab-chart" role="tab" aria-controls="tab-chart" aria-selected="true">
+                        <i class="fa fa-line-chart" aria-hidden="false"> {{ 'printer.title.phaph'|trans }}</i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a  class="nav-link" id="t-average" data-bs-toggle="tab" href="#tab-average" role="tab" aria-controls="tab-average" aria-selected="false">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"> {{ 'printer.title.average'|trans }}
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a  class="nav-link" id="t-resume" data-bs-toggle="tab" href="#tab-resume" role="tab" aria-controls="tab-resume" aria-selected="false">
+                        <i class="fa fa-bars" aria-hidden="true"> {{ 'printer.title.resume'|trans }}</i>
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a  class="nav-link" id="t-professionnal" data-bs-toggle="tab" href="#tab-professionnal" role="tab" aria-controls="tab-professionnal" aria-selected="false">
+                        <i class="fa fa-sort-amount-asc" aria-hidden="true"> {{ 'printer.title.delta'|trans }}
+                        </i>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="printerShowContent">
+                <div id="tab-chart" class="tab-pane fade show active" role="tabpanel" aria-labelledby="t-chart">
+                    {% include "User/printer/tabs/_tab-chart.html.twig" %}
+                </div>
+                <div id="tab-average" class="tab-pane fade" role="tabpanel" aria-labelledby="t-average">
+                    {% include "User/printer/tabs/_tab-cartridges.html.twig" %}
+                </div>
+                <div id="tab-resume" class="tab-pane fade" role="tabpanel" aria-labelledby="t-resume">
+                    {% include "User/printer/tabs/_tab-consumables.html.twig" %}
+                </div>
+                <div id="tab-professionnal" class="tab-pane fade" role="tabpanel" aria-labelledby="t-professionnal">
+                    {% include "User/printer/tabs/_tab-deltas.html.twig" %}
+                </div>
+                <a href="{{ app.request.headers.get('referer') }}" class="btn btn-warning float-left"><i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/plugins/fullcalendar/moment.min.js') }}"></script>
+        <script src="{{ asset('js/plugins/jeditable/jquery.jeditable.js') }}"></script>
+        <script src="{{ asset('js/plugins/jquery-dataTable/jquery-dataTable.js') }}"></script>
+        <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
+        <script src="{{ asset('bundles/sgdatatables/js/pipeline.js') }}"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            {{ gc_draw(printHistoric, 'div_chart_paper') }}
+            {{ gc_draw(inkHistoric, 'div_chart_ink') }}
+        </script>
+    {% endblock %}
+
+

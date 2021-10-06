@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block body %}
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="example-wrapper">
+            <div class="panel-body">
+                <div class="row">
+                    {# Panel - Filters #}
+                    <div class="col-md-12 col-xs-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                    <h5 class="text-black-50"> {{ 'order.cartridge.title.show'|trans({"%orderNumber%": order_cartridge.orderCode}) }} </h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"> </i>
+                                        </a>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ibox-content">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.orderCode"|trans }}</th>
+                                        <td>{{ order_cartridge.orderCode }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.orderer"|trans }}</th>
+                                        <td>{{ order_cartridge.user.fullName }} : {{ order_cartridge.client }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.orderDate"|trans }}</th>
+                                        <td>{{ order_cartridge.orderAt ? order_cartridge.orderAt|date('d/m/Y') : '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.createdAt"|trans }}</th>
+                                        <td>{{ order_cartridge.createdAt ? order_cartridge.createdAt|date('d/m/Y') : '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.state"|trans }}</th>
+                                        <td>{{ order_cartridge.state|trans }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{ "order.cartridge.label.note"|trans }}</th>
+                                        <td>{{ order_cartridge.note }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <a class="btn btn-warning"
+                                           href="{{ app.request.headers.get('referer') }}">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </a>
+                                        {% if not is_granted("ROLE_ADMIN") %}
+                                        <a class="btn btn-warning"
+                                           {{ order_cartridge.state != "order.cartridge.validateType.commanded" ? "disabled" }}
+                                           href="{{ path('user_order_cartridge_edit', {'id': order_cartridge.id}) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                    {% if order_cartridge.state == "order.cartridge.validateType.commanded" %}
+                                    <div class="col-md-2 offset-8 float-right">
+                                        {{ include('Admin/order_cartridge/_delete_form.html.twig') }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{ path('user_order_cartridge_edit', {'id': order_cartridge.id}) }}"
+                                       class="btn btn-success">{{ "order.cartridge.button.changeState"| trans }}</a>
+                                </div>
+                                {% else %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

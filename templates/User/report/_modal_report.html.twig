@@ -1,0 +1,25 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<!-- Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModallabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            {{ form_start(formReport) }}
+            <div class="modal-header">
+                <h5 class="text-black-50 modal-title" id="reportModallabel">{{ "report.title.new" |trans}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{ form_row(formReport.subject) }}
+                {{ form_row(formReport.printer) }}
+                {{ form_row(formReport.ink) }}
+                {{ form_row(formReport.orderCartridge) }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ "button.closeModal"|trans }}</button>
+                <button type="submit" class="btn btn-primary">{{ "button.saveSignal"|trans }}</button>
+            </div>
+            {{ form_end(formReport) }}
+        </div>
+    </div>
+</div>
+

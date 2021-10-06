@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block title %}{{ "report.title.new"|trans }}{% endblock %}
+{% block body %}
+    {{ include('User/report/_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

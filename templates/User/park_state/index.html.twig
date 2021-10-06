@@ -1,0 +1,269 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "parkState.index.title"|trans }}{% endblock %}
+{% block menuActive_resume %}active{% endblock menuActive_resume %}
+{% block body %}
+    <style>
+        .dataTables_wrapper {
+            padding-bottom: 30px;
+            width: 100%;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row">
+            {{ include('User/park_state/_modal_order_cartridge.html.twig') }}
+            {{ include('User/report/_modal_report.html.twig') }}
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="ibox-content">
+                    {% include "User/park_state/_form.html.twig" %}
+                </div>
+            {% endif %}
+            {% for company in companies %}
+                {% if company.printers|length > 0 %}
+                    <div class="wrapper wrapper-content animated fadeInRight" style="padding:1em">
+                        <div class="example-wrapper">
+                            <div class="panel-body">
+                                <div class="row">
+                                    {# Panel - Filters #}
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                                    <h5 class="h4 text-black-50">{{ company.name|lower|capitalize }}</h5>
+                                                    <div class="ibox-tools">
+                                                        <a class="collapse-link">
+                                                            <i class="fas fa-chevron-up"> </i>
+                                                        </a>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="ibox-content dataTables_wrappers">
+                                                {% if is_granted("ROLE_ADMIN") %}
+                                                    <a class="float-end btn-primary btn mt-3"
+                                                       href="{{ path('user_report_index') }}">
+                                                        <i class="fas fa-bullhorn"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <button
+                                                            class="float-end btn-primary btn mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target='#reportModal'>
+                                                        <i class="fas fa-bullhorn"></i>
+                                                    </button>
+                                                {% endif %}
+                                                <div class="d-flex justify-centent-center ">
+
+                                                    <table class="table css-js-optimizeLoadingTime" id="resume-table">
+                                                        <thead class="container-fluid">
+                                                        <tr class="text-center">
+                                                            <th>{{ "printer.label.name"|trans }}</th>
+                                                            <th>{{ "printer.label.lastSync"|trans }}</th>
+                                                            <th>{{ "printer.label.totalPrint"|trans }}</th>
+                                                            {% if is_granted("ROLE_ADMIN") %}
+                                                                <th>{{ "printer.label.cartridgeState"|trans }}</th>
+                                                            {% endif %}
+                                                            <th>{{ "printer.label.orderState"|trans }}</th>
+                                                            <th>{{ "printer.label.bacState"|trans }}</th>
+                                                            <th>{{ "printer.label.state"|trans }}</th>
+                                                            <th>{{ "printer.label.action"|trans }}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        {% for printer in company.printers %}
+                                                            {% set lastConsumable = printer.consumables|last %}
+                                                            <tr class="text-center">
+                                                                <td>
+                                                                    <div class="d-flex">
+                                                                        <h4 class="m-3">{{ printer.name }}{{ printer.subname ? " - "~printer.subname }}</h4>
+                                                                        <a href="{{ path('user_printer_edit', {'id': printer.id}) }}"
+                                                                           class="btn btn-success btn-sm mt-2"
+                                                                           style="max-height: 30px">
+                                                                            <i class="fas fa-ellipsis-h"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                <td>{{ lastConsumable.dateUpdate|date("d/m/Y") }}</td>
+                                                                <td>{{ lastConsumable.PPT }}</td>
+                                                                <td>
+                                                                    <div class="d-flex justify-content-center">
+                                                                        {% for cartridge in printer.cartridge %}
+                                                                            {% set lastOrderCartridge = cartridge.orderCartridges|last %}
+                                                                            <div class="text-center d-flex flex-column justify-content-center col-md-2 mx-1"
+                                                                                 style="position:relative;">
+                                                                                <a class="capsule rounded p-2 text-decoration-none"
+                                                                                   id="{{ cartridge.id }}"
+                                                                                   onmouseover="$('#cartridge-{{ cartridge.id }}').toggle()"
+                                                                                   onmouseout="$('#cartridge-{{ cartridge.id }}').toggle()"
+                                                                                   data-cartridge="{{ cartridge.id }}"
+                                                                                   data-bs-toggle="modal"
+                                                                                   style="height:60px;background: linear-gradient( white {{ 100 - cartridge.restInkPercent }}%, {{ cartridge.colorCode }} 90%); color: #292c5d"
+                                                                                        {% if not is_granted("ROLE_ADMIN") %}
+                                                                                            {% if cartridge.orderCartridges|length == 0 %}
+                                                                                                data-bs-target='#orderModal'
+                                                                                            {% else %}
+                                                                                                href="{{ path('user_order_cartridge_edit', {"id" : lastOrderCartridge.id}) }}"
+                                                                                            {% endif %}
+                                                                                        {% else %}
+                                                                                            href="{{ path('admin_order_cartridge_orders', {'id' : cartridge.id} ) }}"
+                                                                                        {% endif %}
+                                                                                   style="height:60px;background: linear-gradient( white {{ 100 - cartridge.restInkPercent }}%, {{ cartridge.colorCode }} 90%); color: #292c5d">
+                                                                                    {{ cartridge.restInkPercent < company.inkBreakingUpLvl ? "<i class='text-danger fas fa-exclamation-triangle' aria-hidden='true'></i>" }}
+                                                                                    {{ cartridge.restInkPercent }}%
+                                                                                    <br>
+                                                                                    {% if cartridge.orderCartridges|length > 0 %}
+                                                                                        {% if not is_granted("ROLE_ADMIN") %}
+                                                                                            <div class='orderer'>
+                                                                                                {{ "order.cartridge.orderer"|trans }}
+                                                                                            </div>
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                    <div class="cartridgeDetail"
+                                                                                         id="cartridge-{{ cartridge.id }}">
+                                                                                        <ul class="pl-3 pt-3 pr-3">
+                                                                                            <li>{{ "cartridge.label.name"|trans }}
+                                                                                                : {{ cartridge.name }}</li>
+                                                                                            <li>{{ "cartridge.label.size"|trans }}
+                                                                                                : {{ cartridge.size }}</li>
+                                                                                            <li>{{ "cartridge.label.restInk"|trans }}
+                                                                                                : {{ cartridge.restDays }}</li>
+                                                                                            <li>{{ "cartridge.label.restPrint"|trans }}
+                                                                                                : {{ cartridge.restPrints }}</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                </td>
+                                                                {% if is_granted("ROLE_ADMIN") %}
+                                                                    <td>
+                                                                        <ul>
+                                                                            {% if printer.orderCartridges|length > 0 %}
+                                                                                {% for cartridge in printer.cartridge %}
+                                                                                    {% for order in cartridge.orderCartridges %}
+                                                                                        <li>
+                                                                                            {{ cartridge.color }}
+                                                                                            - {{ order.state|trans }}
+                                                                                        </li>
+                                                                                    {% endfor %}
+                                                                                {% endfor %}
+                                                                            {% else %}
+                                                                                <em>{{ "order.cartridge.notFound"|trans }}</em>
+                                                                            {% endif %}
+                                                                        </ul>
+                                                                    </td>
+                                                                {% endif %}
+                                                                <td>
+                                                                    <div class="text-center d-flex flex-column justify-content-center col-md-4 m-auto position-relative">
+                                                                        <a class="capsule rounded p-2 text-decoration-none"
+                                                                           id="{{ printer.recoveryBac.id }}"
+                                                                           onmouseover="$('#mbr-{{ printer.recoveryBac.id }}').toggle()"
+                                                                           onmouseout="$('#mbr-{{ printer.recoveryBac.id }}').toggle()"
+                                                                           style="height: 60px; background: linear-gradient( white {{ 100 - lastConsumable.mbr }}%, #01ffff 90%); color: #292c5d">
+                                                                            {{ printer.recoveryBac.restBacPercent }}%
+
+                                                                            <div class="cartridgeDetail"
+                                                                                 id="mbr-{{ printer.recoveryBac.id }}">
+                                                                                <ul class="pl-3 pt-3 pr-3">
+                                                                                    <li>Jour restant
+                                                                                        : {{ printer.recoveryBac.restDays }}</li>
+                                                                                    <li>nb d'impression
+                                                                                        : {{ printer.recoveryBac.restPrints }}</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    {% if lastConsumable.print.state == "printer.states.awaitingMaintenance" %}
+                                                                        <span class="fa fa-circle" style="color: orange"
+                                                                              title="{{ "printer.states.awaitingMaintenance"|trans }}"></span>
+                                                                    {% elseif lastConsumable.print.state == "printer.states.operational" %}
+                                                                        <span class="fa fa-circle text-success"
+                                                                              title="{{ "printer.states.operational"|trans }}">
+                                                                        </span>
+                                                                    {% else %}
+                                                                        <span class="fa fa-circle text-danger"
+                                                                              title="{{ "printer.states.broken"|trans }}">
+                                                                        </span>
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{ path('user_printer_show', {'id': printer.id}) }}"
+                                                                       class="btn btn-primary  btn-xs">
+                                                                        <i class="fas fa-search"></i>
+                                                                    </a>
+                                                                    <a href="{{ path('user_printer_change_state', {"id" :  printer.id}) }}"
+                                                                       class="btn btn-success">
+                                                                        <i class="far fa-flag"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/fullcalendar/moment.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/jeditable/jquery.jeditable.js') }}"></script>
+    <script src="{{ asset('js/plugins/jquery-dataTable/jquery-dataTable.js') }}"></script>
+    <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('bundles/sgdatatables/js/pipeline.js') }}"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.22/sorting/date-uk.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#resume-table').DataTable({
+                columnDefs: [
+                    {type: 'date-uk', targets: 1}
+                ],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            let choice = $("#report_subject")
+            choice.on('change', () => {
+
+                if (choice.val() === "report.subject.print") {
+                    $(".cartridgeReport").hide()
+                    $(".orderReport").hide()
+                    $(".printerReport").show()
+                }
+                if (choice.val() === "report.subject.ink") {
+                    $(".orderReport").hide()
+                    $(".printerReport").hide()
+                    $(".cartridgeReport").show()
+                }
+                if (choice.val() === "report.subject.order") {
+                    $(".printerReport").hide()
+                    $(".cartridgeReport").hide()
+                    $(".orderReport").show()
+                }
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".capsule").on("click", (e) => {
+                getCratridgeInfo(e, $('#order_cartridge_ink_cartridge'), $('#order_cartridge_ink_client'), $('#order_cartridge_ink_printer'), "{{ path('park_state_index') }}")
+            })
+        })
+    </script>
+{% endblock %}

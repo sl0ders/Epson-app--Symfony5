@@ -1,0 +1,118 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<div class="card-body">
+    <div class="scrollable-table">
+        <table id="order-table"
+               class="text-center table table-striped table-hover dataTables css-js-optimizeLoadingTime">
+            <thead>
+            <tr>
+                <th class="text-center"><i class="fa fa-calendar" aria-hidden="true"> </i>
+                    <br> {{ "consumable.label.datatable.date"| trans }}</th>
+                <th class="text-center"><i class="fa fa-battery-quarter" style="color: yellow" aria-hidden="true"> </i>
+                    <br>{{ "consumable.label.yellow"| trans }}</th>
+                <th class="text-center">
+                    <i class="fa fa-battery-quarter" style="color: magenta" aria-hidden="true"> </i>
+                    <br>{{ "consumable.label.magenta"| trans }}</th>
+                <th class="text-center">
+                    <i class="fa fa-battery-quarter" style="color: cyan" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.cyan"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-battery-quarter" style="color: black" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.black"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a3m"| trans }}</th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a3c"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a3dm"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a3dc"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a4m"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a4c"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                    <br>
+                    {{ "consumable.label.datatable.a4dc"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.datatable.a4dm"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.datatable.mpp"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.datatable.cpp"| trans }}
+                </th>
+                <th class="text-center">
+                    <i class="fa fa-file-o" aria-hidden="true"> </i>
+                    <br>
+                    {{ "consumable.label.datatable.ppt"| trans }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for delta in deltas %}
+                <tr>
+                    <td>{{ delta.updateAt | format_date("short") }}</td>
+                    <td>{{ delta.yellowDelta }}%</td>
+                    <td>{{ delta.magentaDelta }}%</td>
+                    <td>{{ delta.cyanDelta }}%</td>
+                    <td>{{ delta.blackDelta }}%</td>
+                    <td>{{ delta.a3MDelta }}</td>
+                    <td>{{ delta.a3CDelta }}</td>
+                    <td>{{ delta.a3DMDelta }}</td>
+                    <td>{{ delta.a3DCDelta }}</td>
+                    <td>{{ delta.a4MDelta }}</td>
+                    <td>{{ delta.a4CDelta }}</td>
+                    <td>{{ delta.a4DCDelta }}</td>
+                    <td>{{ delta.a4DMDelta }}</td>
+                    <td>{{ delta.mPPDelta }}</td>
+                    <td>{{ delta.cPPDelta }}</td>
+                    <td>{{ delta.pPTDelta }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="//cdn.datatables.net/plug-ins/1.10.22/sorting/date-uk.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#order-table').DataTable({
+            columnDefs: [
+                {type: 'date-uk', targets: 0}
+            ],
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            }
+        });
+    });
+</script>

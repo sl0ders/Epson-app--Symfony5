@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'EpsonProjectTrans' %}
+{% block title %}{{ "notification.title.show"|trans }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="example-wrapper">
+                <div class="panel-body">
+                    <div class="row">
+                        {# Panel - Notifications #}
+                        <div class="col-md-12 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                        <h5 class="text-black-50"> {{ "notification.title.show"|trans }} du {{ notification.createdAt|date("d/m/Y H:i:s") }} </h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"> </i>
+                                            </a>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="ibox-content">
+                                    <h1>{{ "notification.title.show"|trans }}</h1>
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th>{{ "notification.label.date"|trans }}</th>
+                                            <td>{{ notification.createdAt ? notification.createdAt|date("d/m/Y H:i:s") }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ "notification.label.message"|trans }}</th>
+                                            <td>{{ notification.message }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a class="btn btn-success" href="{{ path('user_notification_index') }}"><i
+                                                class="fa fa-arrow-left"></i></a>
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                        {% if notification.isEnabled %}
+                                            <a class="btn btn-primary"
+                                               href="{{ path('user_notification_enabled', {'id': notification.id}) }}"><i
+                                                        class="fa fa-toggle-off"></i></a>
+                                        {% else %}
+                                            <a class="btn btn-danger"
+                                               href="{{ path('user_notification_enabled', {'id': notification.id}) }}"><i
+                                                        class="fa fa-toggle-on"></i></a>
+                                        {% endif %}
+                                    {% endif %}
+                                    <a href="{{ path(notification.path, {"id" : notification.idPath}) }}" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

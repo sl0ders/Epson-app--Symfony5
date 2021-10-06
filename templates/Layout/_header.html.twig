@@ -1,0 +1,71 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    {% include 'Layout/Flashes/inspiniaFlashes.html.twig' %}
+    {% set nNotificationNotRead = 0 %}
+    {% for notification in notifications %}
+        {% if notification.readAt is null %}
+            {% set nNotificationNotRead = nNotificationNotRead + 1 %}
+        {% endif %}
+    {% endfor %}
+    <ul class="nav align-items-center justify-content-between" style="width:240px">
+        <li class="btn-group">
+            <a type="button" class="dropdown-toggle btn-group-sm text-decoration-none" data-bs-toggle="dropdown"
+               data-bs-display="static" aria-expanded="false">
+                <span class="fa fa-bell"></span>{{ nNotificationNotRead }}
+            </a>
+            <ul class="dropdown-menu" style="width: 23vw">
+                {% for notification in notifications %}
+                    <a class="text-decoration-none notif rounded" id="{{ notification.id }}"
+                       href="{{ path("user_notification_show", {'id': notification.id}) }}">
+                        <li {{ notification.readAt is null ? " style='background-color : #a7d4f7'" }} class="p-2">
+                            <em class="font-bold">{{ notification.createdAt|date("d/m/Y H:i:s") }}</em>
+                            - {{ notification.message }}
+                            {% if notification.path is not null %}
+
+
+                                <a class="text-decoration-none text-primary" href="{{ path(notification.path, {'id': notification.idPath}) }}">
+                                    <br>
+                                    -->{{ "notification.text.seeNotificationObject"|trans }}
+                                </a>
+                            {% endif %}
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="m-0">
+            <a href="{{ path('app_logout') }}">
+                <i class="fa fa-sign-out"> </i> {{ "login.button.deconnection" | trans }}
+            </a>
+        </li>
+    </ul>
+</nav>
+<script>
+    let notification = $(".notif")
+    notification.on("click", (e) => {
+        $.ajax({
+            type: "GET",
+            url: "{{ (path('changeReadAt')) }}",
+            data: {
+                notification: e.target.id
+            },
+            dataType: "json",
+            success: function () {
+                if (e.target.id) {
+                    let url = '{{ path("user_notification_show", {'id': 'id'}) }}';
+                    url = url.replace("id", e.target.id);
+                    window.location.replace(url);
+                } else
+                    alert("vide");
+            }
+        }, "json");
+        return false;
+    })
+</script>
+
+

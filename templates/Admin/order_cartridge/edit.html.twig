@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "order.cartridge.title.edit"|trans({"%orderCode%": order_cartridge.orderCode}) }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="example-wrapper">
+                <div class="panel-body">
+                    <div class="row">
+                        {# Panel - Filters #}
+                        <div class="col-md-12 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                        <h5 class="text-black-50">{{ "order.cartridge.title.edit"|trans({"%orderCode%": order_cartridge.orderCode}) }}</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"> </i>
+                                            </a>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="ibox-content">
+                                    {{ include('Admin/order_cartridge/_form.html.twig', {'button_label': 'button.update'|trans}) }}
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <a class="btn btn-warning"
+                                               href="{{ app.request.headers.get('referer') }}">
+                                                <i class="fas fa-arrow-left"></i>
+                                            </a>
+                                        </div>
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                        <div class="col-md-2 offset-8 float-right">
+                                            {{ include('Admin/order_cartridge/_delete_form.html.twig') }}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

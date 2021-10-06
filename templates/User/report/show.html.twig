@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "report.show.title"|trans({"%reportCode%": report.reportCode}) }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="example-wrapper">
+                <div class="panel-body">
+                    <div class="row">
+                        {# Panel - Filters #}
+                        <div class="col-md-12 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                        <h5 class="text-black-50">{{ "report.show.title"|trans({"%reportCode%": report.reportCode}) }} </h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"> </i>
+                                            </a>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="d-flex justify-content-around mb-5">
+                                        <div class="border rounded-3 p-2 blue-hover">{{ report.reportCode }}</div>
+                                        <div class="border rounded-3 p-2 blue-hover">{{ report.company }}</div>
+                                        <div class="border rounded-3 p-2 blue-hover">{{ report.createdAt|date("d/m/Y H:i:s") }}</div>
+                                        <a class="text-decoration-none border rounded-3 p-2 blue-hover"
+                                           href="{{ report.printer ? path('user_printer_show',{"id" : report.printer.id}) }}
+                                            {{ report.orderCartridge ? path('admin_order_cartridge_show', {"id": report.orderCartridge.id}) }}">
+                                            {{ report.subject|trans }}-
+                                            {{ report.printer ? report.printer.name }}
+                                            {{ report.ink ? report.ink.name }}
+                                            {{ report.orderCartridge ? report.orderCartridge.orderCode }}
+                                        </a>
+                                    </div>
+                                    {% for message in report.messageReports %}
+                                        <div class="p-1 m-1 row">
+                                            {% if message.sender  == "AdminCompany" %}
+                                                <div class="row float-end col-md-9 offset-2 border-white bg-white rounded-2 p-3"
+                                                     style="box-shadow: 2px 2px 2px  #bebdbd ">
+                                                    <div class="col-md-3">
+                                                        {{ message.sender }}
+                                                        <br>{{ message.createdAt|date("d/m/Y H:i:s") }}
+                                                    </div>
+                                                    <p class="col-md-8">
+                                                        {{ message.message }}
+                                                    </p>
+                                                </div>
+                                            {% else %}
+                                                <div class="row col-md-9 offset-1  p-3 border-white bg-white  rounded-2"
+                                                     style="box-shadow: -2px 2px 2px  #bebdbd ">
+                                                    <div class="col-md-3">
+                                                        {{ message.sender }}
+                                                        <br>{{ message.createdAt|date("d/m/Y H:i:s") }}
+                                                    </div>
+                                                    <p class="col-md-8">
+                                                        {{ message.message }}
+                                                    </p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                    {{ form_start(form) }}
+                                    <div class="col-md-6 offset-3 mt-3">
+                                        {{ form_widget(form.message) }}
+                                        <button style="color: #898686; font-size: 0.9em" class="btn-primary text-white btn ml-5 mt-2" type="submit">
+                                            Envoyé
+                                        </button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                        <div class="float-right">
+                                            {% if report.statut %}
+                                                <a class="btn btn-primary"
+                                                   href="{{ path('user_report_enabled', {'id': report.id}) }}"><i
+                                                            class="fa fa-toggle-off"></i></a>
+                                            {% else %}
+                                                <a class="btn btn-danger"
+                                                   href="{{ path('user_report_enabled', {'id': report.id}) }}"><i
+                                                            class="fa fa-toggle-on"></i></a>
+                                            {% endif %}
+                                        </div>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

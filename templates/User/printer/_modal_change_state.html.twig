@@ -1,0 +1,20 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<!-- Modal -->
+<div class="modal fade" id="changeStateModal" tabindex="-1" aria-labelledby="changeStateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black-50" id="changeStateLabel">{{ "printer.text.stateChange"| trans}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ "button.closeModal"|trans }}</button>
+                <button type="submit" class="btn btn-primary">{{ "button.saveSignal"|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+

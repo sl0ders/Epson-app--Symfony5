@@ -1,0 +1,54 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+{{ form_start(formNew, {"action": "new"}) }}
+<div class="modal fade" id="ModalNewPrinter" tabindex="-1" role="dialog" aria-labelledby="ModalNewPrinter"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="ModalNewPrinter">{{ "printer.text.add"|trans }}</h3>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ form_row(formNew.name) }}
+                {{ form_row(formNew.office) }}
+                {{ form_row(formNew.ip) }}
+                {{ form_row(formNew.mac) }}
+                {{ form_row(formNew.sn) }}
+                {{ form_row(formNew.swv) }}
+                {{ form_row(formNew.des) }}
+                <hr>
+                <h2>Etat de l'imprimante</h2>
+                <h3>Encre</h3>
+                {{ form_row(formNew.consumable.yellow) }}
+                {{ form_row(formNew.consumable.cyan) }}
+                {{ form_row(formNew.consumable.magenta) }}
+                {{ form_row(formNew.consumable.black) }}
+                <hr>
+                <h3>Impression</h3>
+                <div>
+                {{ form_row(formNew.consumable.A3M) }}
+                {{ form_row(formNew.consumable.A3C) }}
+                {{ form_row(formNew.consumable.A4M) }}
+                {{ form_row(formNew.consumable.A4C) }}
+                {{ form_row(formNew.consumable.PPT) }}
+                {{ form_row(formNew.consumable.MPP) }}
+                {{ form_row(formNew.consumable.CPP) }}
+                {{ form_row(formNew.consumable.A3DM) }}
+                {{ form_row(formNew.consumable.A4DM) }}
+                {{ form_row(formNew.consumable.A3DC) }}
+                {{ form_row(formNew.consumable.A4DC) }}
+                {{ form_row(formNew.consumable.MBR) }}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">{{ "printer.btn.add"| trans }}</button>
+
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">{{ "printer.btn.close" |trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(formNew) }}

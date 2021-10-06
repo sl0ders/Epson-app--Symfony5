@@ -1,0 +1,481 @@
+/**********************************
+ * Flit
+ **********************************/
+#page-wrapper {
+    background-size: 30%;
+    background-position: 95% 92%;
+    background-origin: padding-box;
+    background-color: #F3F3F4;
+}
+
+.widget a {
+    color: white;
+}
+
+/**********************************
+ * General
+ **********************************/
+
+img {
+    max-width: 100%;
+}
+
+/**********************************
+ * Menu
+ **********************************/
+
+.nav-header, body.mini-navbar .nav-header {
+    background: linear-gradient(180deg, #0d1026, transparent);
+}
+
+
+
+.nav > li.active,
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus,
+.mini-navbar .nav .nav-second-level {
+    background-color: #f5f5f5;
+    color: #4e4d4d;
+}
+
+.navbar-default .nav-third-level > li.active,
+.navbar-default .nav-third-level > li > a:hover,
+.navbar-default .nav-third-level > li > a:focus {
+    background-color: #d0d0d0;
+    border: none;
+}
+.navbar-default .nav-third-level > li.active:hover a {
+    background-color: #cacaca;
+    color: #424242;
+}
+
+body:not(.mini-navbar) .nav.nav-second-level > li.active,
+body:not(.mini-navbar) .navbar-default .nav.nav-second-level > li > a:hover,
+body:not(.mini-navbar) .navbar-default .nav.nav-second-level > li > a:focus,
+body:not(.mini-navbar) .nav .nav-second-level > a:hover,
+body:not(.mini-navbar) .nav .nav-second-level > a:focus {
+    margin-left: -4px;
+    border-left: 4px solid #2e7b6c;
+}
+
+.nav-second-level li:last-child {
+    margin-bottom: 0;
+}
+
+body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-second-level,
+.mini-navbar .nav li:focus > .nav-second-level {
+    box-shadow: 5px 0 10px -7px rgba(181, 10, 10, 0.33);
+}
+
+.nav > li.active a,
+.tabs-container > .nav > li > a {
+    color: #686b6d;
+}
+
+.nav > li > a,
+.nav-header .text-muted {
+    color: #bfbfbf;
+}
+
+.navbar-default .nav-second-level > li > a {
+    color: #a4a4a4;
+}
+
+ul.nav-second-level {
+    background-color: #f5f5f5;
+}
+
+/* fix */
+body.mini-navbar .navbar-default .nav-second-level .nav-label,
+body.mini-navbar .navbar-default .nav-second-level li a span {
+    display: initial!important;
+}
+
+.nav.nav-second-level > li.active,
+.navbar-default .nav.nav-second-level > li > a:hover,
+.navbar-default .nav.nav-second-level > li > a:focus,
+.mini-navbar .nav .nav-second-level > a:hover,
+.mini-navbar .nav .nav-second-level > a:focus {
+    background-color: #e1e1e1;
+    color: #686B6D;
+}
+
+.logo-head-menu {
+    position: absolute;
+    right: 0;
+    top: 2em;
+
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-avatar-menu {
+    max-height: 65px;
+}
+
+/**********************************
+ * Login
+ **********************************/
+.login-bg {
+    background: #121835;
+    background-size: cover;
+}
+
+.logo-login {
+    margin: 1em 0;
+}
+
+.panel-login {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.panel-header-login {
+    background-color: #121835!important;
+    color:white!important;
+    border: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+}
+
+.panel-body-login {
+    /*background-image:linear-gradient(#3eb64a, #d9e021);*/
+    background-color: white;
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+}
+
+.panel-body-content-login {
+    max-width: 250px;
+    margin:auto
+}
+
+/**********************************
+ * Button
+ **********************************/
+.btn-flit-dark {
+    background: #121835;
+    border-color: #121835;
+    color: #ffffff;
+}
+
+.btn-flit-light {
+    background: #2177e0;
+    border-color: #2177e0;
+    color: #ffffff;
+}
+
+.buttonAlertMessage {
+    margin-top: -0.6%;
+}
+
+.buttonAlert {
+    margin-top: -2.5%;
+}
+
+/**********************************
+ * Forms
+ **********************************/
+.chosen-container-single .chosen-single {
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    background: inherit;
+    box-shadow: inherit;
+    padding: 6px 12px;
+    line-height: inherit;
+}
+
+.chosen-container {
+    background-color: #FFFFFF;
+}
+
+.ibox-gray-bg {
+    background-color: #f9f9f9;
+}
+
+.ibox-gray-bg .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f3f3f4;
+}
+
+.checkbox-row {
+    height: 59px;
+}
+
+/** Used to remove default buttons on touchspin */
+.no-buttons-input-number {
+    -moz-appearance: textfield;
+}
+
+/*input:not([type="checkbox"]) {*/
+/*    height: 30px !important;*/
+/*    padding: 5px 10px !important;*/
+/*    font-size: 12px !important;*/
+/*    line-height: 1.5 !important;*/
+/*    border-radius: 3px !important;*/
+/*}*/
+
+/*select:not([multiple]) {*/
+/*    height: 30px !important;*/
+/*    padding: 5px 10px !important;*/
+/*    font-size: 12px !important;*/
+/*    line-height: 1.5 !important;*/
+/*    border-radius: 3px !important;*/
+/*}*/
+
+/*textarea {*/
+/*    font-size: 12px !important;*/
+/*    line-height: 1.5 !important;*/
+/*    border-radius: 3px !important;*/
+/*}*/
+
+label.required:after {
+    content: " *";
+    color: red;
+}
+
+.switch {
+    height: 30px !important;
+}
+
+.switch-margin-family {
+    float: right;
+}
+
+.form-condensed .form-group {
+    margin: 0 0 5px;
+}
+
+.float-e-margins .btn {
+    margin-bottom: 0;
+}
+
+.btn.pull-right {
+    margin-left: 3px;
+}
+
+.margin-family-input {
+    background: #FFFFFF none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    box-shadow: none;
+    width: 80px;
+}
+
+/*.onoffswitch-inner-percent-euro:before{*/
+/*content: "%";*/
+/*text-align: center;*/
+/*}*/
+/*.onoffswitch-inner-percent-euro:after{*/
+/*content: "€";*/
+/*text-align: center;*/
+/*}*/
+
+textarea {
+    max-width: 100%;
+}
+
+/**********************************
+ * Global
+ **********************************/
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.padding-top-20 {
+    padding-top: 20px;
+}
+
+.padding-bottom-20 {
+    padding-bottom: 20px;
+}
+
+.div-sa {
+    display: inline-block;
+    border: 1px dashed #ed5565;
+    padding: 5px;
+    margin: 5px;
+    float: right;
+}
+
+.label-sa {
+    position: relative;
+    float: right;
+    top: -15px;
+    right: -10px;
+    display: inline;
+    margin-bottom: 5px;
+}
+
+/**********************************
+ * Datatables
+ **********************************/
+@media (min-width: 768px) {
+    .form-inline .form-control {
+        width: 100%;
+    }
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+
+/************* Override ***********/
+/****** Used in accountingBundle *****/
+.custom-sg-datatable .dt-buttons{
+    display: block !important;
+    background-color: #ddd !important;
+    float: right;
+}
+.custom-sg-datatable .dataTables_length{
+    float: left;
+}
+.custom-sg-datatable div.dataTables_wrapper > div.dataTables_info{
+    float: left;
+    position: unset !important;
+}
+
+/**********************************
+ * Multi-line
+ **********************************/
+.pre-wrap {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**********************************
+ * Tabs
+ **********************************/
+.tabs-container .nav-tabs > li.active > a, .tabs-container .nav-tabs > li.active > a:hover, .tabs-container .nav-tabs > li.active > a:focus {
+    border: 1px solid #e7eaec;
+    border-bottom-color: transparent;
+    background-color: #ffffff;
+    color: #303030;
+}
+
+.tabs-container .tab-pane.active {
+    border: 1px solid #ffffff;
+}
+
+#param-page .tabs-container .tab-pane .panel-body {
+    border-top: 1px solid #e7eaec;
+}
+
+.tabs-container {
+    padding-bottom: 25px;
+}
+
+/**********************************
+ * List
+ **********************************/
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.b-l {
+    border-left: 1px solid #e7eaec;
+}
+
+/***********************************
+* Custom switch
+***********************************/
+.switch-field {
+    font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+    padding: 0;
+    overflow: hidden;
+}
+
+.switch-title {
+    margin-bottom: 6px;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    float: left;
+}
+
+.switch-field label {
+    display: inline-block;
+    width: 30px;
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 10px;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: none;
+    padding: 3px 7px;
+    border: 1px solid #ffffff;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+.switch-field input:checked + label {
+    background-color: #01B294;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: white;
+}
+
+.switch-field label:first-of-type {
+    border-radius: 2px 0 0 2px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 2px 2px 0;
+}
+
+/**********************************
+ * Picture
+ **********************************/
+.img-thumbnail {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+/**********************************
+ * Translations
+ **********************************/
+.tabs-translations {
+    padding-bottom: 50px;
+}
+
+/** Textarea bootstrap fix on touch devices */
+textarea {
+    position: relative;
+    z-index: 1000;
+}

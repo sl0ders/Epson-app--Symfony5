@@ -1,0 +1,38 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+
+{{ form_start(formSearch) }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="" style="display: flex; justify-content: center">
+            <div class="col-md-8 col-sm-10 col-xs-12 flex-column"
+                 style="display: flex; justify-content: center">
+                <div class="col-xs-6 mt-xs">
+                    {{ form_row(formSearch.dateStart) }}
+                </div>
+                <div class="col-xs-6 mt-xs">
+                    {{ form_row(formSearch.dateEnd) }}
+                </div>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="col-xs-6 mt-xs">
+                        {{ form_row(formSearch.company) }}
+                    </div>
+                {% endif %}
+                {% if formSearch.printer is defined %}
+                    <div class="col-xs-6 mt-xs">
+                        {{ form_row(formSearch.printer) }}
+                    </div>
+                {% endif %}
+                <div>
+                    {{ form_row(formSearch.all) }}
+                </div>
+                <div class="col-xs-12" style="margin-top: 23px;">
+                    <button id="subSearch" type="submit" class="btn btn-info pull-right"
+                            title="{{ 'link.filter'|trans }}">
+                        <i class="fa fa-check"> </i> {{ 'link.filter'|trans }}</button>
+                </div>
+            </div>
+            {{ form_rest(formSearch) }}
+        </div>
+    </div>
+</div>
+{{ form_end(formSearch) }}

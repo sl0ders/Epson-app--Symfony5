@@ -1,0 +1,9 @@
+constraints:
+    printer:
+        exist: "Cette imprimante existe deja"
+    login:
+        emailExist: "Erreur cette adresse email existe deja"
+        passwordNoMatch: "Les deux mot de passe doivent etre identiques"
+    company:
+        email:
+            format: "Le format d'adresse email n'est pas respecté"

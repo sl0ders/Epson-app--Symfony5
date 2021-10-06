@@ -1,0 +1,43 @@
+danger: "Attention"
+success: "Ok"
+flash:
+    search:
+        text:
+            orderDateCancelled: "La date de début doit être superieure a la date de fin"
+    printer:
+        text:
+            successAdd: "L'imprimante a bien été enregistrée"
+            successDelete: "L'imprimante a bien été supprimer"
+            deleteCancelled: "Impossible de supprimer cette imprimante"
+        email:
+            sendSuccessFully: "%notifCount% emails d'alerte on été envoyé."
+            sendFailed: "Les emails n'on pas pu etre envoyé"
+        file:
+            exist: "Ce fichier a deja été entré dans la base de donnée"
+            addSuccessFully: "Votre fichier a bien été importé"
+        allFile:
+            updateSuccessfully: "La liste des imprimantes a bien été mise a jour, les emails et notifications d'alerte, si il y en a, ont bien été envoyés"
+    notification:
+        disabled: 'La notification a bien été archivée'
+        enabled: 'La notification a bien été désarchivée'
+    user:
+        isNotEmailRecipient: "L'utilisateur %userName% ne recevra plus d'email d'alerte de penurie d'encre"
+        isEmailRecipient: "A partir de maintenant l'utilisateur %userName% recevra les emails d'alerte de penuerie d'encre"
+        updateSuccessFully: "L'utilisateur a bien été mis a jour"
+        deleteSuccessFully: "Lutilisateur a bien été supprimé"
+    company:
+        updatedSuccessfully: "La mise a jour des informations de l'entreprise a bien été effecuée"
+        text:
+            disabled: "L'entreprise a bien été desactivée, les imprimantes statistiques et alertes email sont également desactivé"
+            enabled: "L'entreprise a bien été activé, les imprimantes statistiques et alertes email sont également remis en place"
+            deleted: "L'entreprise a bien été supprimé"
+            deletedFailed: "Echec de la suppression de l'entreprise"
+
+    order:
+        editSuccessfully: "La commande a bien été modifié"
+    report:
+        disabled: 'Rapport archivé'
+        enabled: 'Rapport actif'
+        messageReport:
+            createdSuccessfullyAtAdmin: "Le message a bien été transmit a l'administrateur"
+            createdSuccessfullyAtClient: "Le message a bien été transmit au client"

@@ -1,0 +1,112 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{{ form_start(form) }}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="example-wrapper">
+        <div class="panel-body">
+            <div class="row">
+                {# Panel - Filters #}
+                <div class="col-md-12 col-xs-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                <h5 class="text-black-50">{{ "company.title.edit"|trans({"%company%": company.name}) }}</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"> </i>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="ibox-content">
+                            <ul class="nav nav-tabs" id="companyTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="t-identity" data-bs-toggle="tab" href="#tab-identity"
+                                       role="tab" aria-controls="tab-identity" aria-selected="true">
+                                        <i class="fa fa-id-badge"
+                                           aria-hidden="true"> {{ 'form.tab.identity'|trans }}</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="t-breakingUp" data-bs-toggle="tab" href="#tab-breakingUp"
+                                       role="tab" aria-controls="tab-breakingUp" aria-selected="true">
+                                        <i class="fa fa-battery-quarter" aria-hidden="true">
+                                            {{ 'form.tab.breakingUp'|trans }}</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="t-address" data-bs-toggle="tab" href="#tab-address"
+                                       role="tab" aria-controls="tab-address" aria-selected="false">
+                                        <i class="fa fa-address-card-o" aria-hidden="true">
+                                            {{ 'form.tab.address'|trans }}
+                                        </i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="t-description" data-bs-toggle="tab" href="#tab-description"
+                                       role="tab" aria-controls="tab-description" aria-selected="false">
+                                        <i class="fa fa-address-card-o" aria-hidden="true">
+                                            {{ 'form.tab.description'|trans }}
+                                        </i>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="t-logo" data-bs-toggle="tab" href="#tab-logo"
+                                       role="tab" aria-controls="tab-logo" aria-selected="false">
+                                        <i class="fa fa-address-card-o" aria-hidden="true">
+                                            {{ 'form.tab.logo'|trans }}
+                                        </i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="companyFormContent">
+                                <div id="tab-identity" class="tab-pane fade show active" role="tabpanel"
+                                     aria-labelledby="t-identity">
+                                    <div class="border-left-right border-bottom p-3">
+                                        {{ form_row(form.name) }}
+                                        {{ form_row(form.email) }}
+                                        {{ form_row(form.phone) }}
+                                        {{ form_row(form.isEnabled) }}
+                                        {{ form_row(form.socialReason) }}
+                                        {{ form_row(form.siren) }}
+                                        {{ form_row(form.siret) }}
+                                        {{ form_row(form.fax) }}
+                                        {{ form_row(form.website) }}
+                                    </div>
+                                </div>
+                                <div id="tab-address" class="tab-pane fade" role="tabpanel" aria-labelledby="t-address">
+                                    <div class="border-left-right border-bottom p-3">
+                                        {{ form_widget(form.address) }}
+                                    </div>
+                                </div>
+                                <div id="tab-breakingUp" class="tab-pane fade col-md-3 m-auto mt-5 border p-3" role="tabpanel" aria-labelledby="t-breakingUp">
+                                    <h3 class="text-center">{{ "company.text.explainBreakingUp"|trans }}</h3>
+                                    <div class="p-3">
+                                        {{ form_row(form.bacBreakingUpDays) }}
+                                        {{ form_row(form.bacBreakingUpLvl) }}
+                                        {{ form_row(form.inkBreakingUpDays) }}
+                                        {{ form_row(form.inkBreakingUpLvl) }}
+                                    </div>
+                                </div>
+                                <div id="tab-description" class="tab-pane fade" role="tabpanel"
+                                     aria-labelledby="t-description">
+                                    <div class="border-left-right border-bottom p-3">
+                                        {{ form_row(form.shortDescription) }}
+                                    </div>
+                                </div>
+                                <div id="tab-logo" class="tab-pane fade" role="tabpanel" aria-labelledby="t-logo">
+                                    <div class="border-left-right border-bottom p-3">
+                                        {{ form_row(form.logo) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_row(form.submit) }}
+                            {{ form_row(form._token) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

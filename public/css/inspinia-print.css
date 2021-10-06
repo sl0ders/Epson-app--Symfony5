@@ -1,0 +1,262 @@
+.margint-20 {
+    margin-top: 20px;
+}
+
+.margint-40 {
+    margin-top: 40px;
+}
+
+.row,
+.block-border,
+body, h1, h2, h3, h4, h5, h6, p, address, small,
+h2 small {
+    color: black;
+}
+
+body {
+    font-size: 12px;
+    position: relative;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+/**********************************
+ * Specifics class
+ **********************************/
+
+.delivery-fontSize{
+    font-size: 22px;
+}
+
+.print-coordinate,
+.intra-tva {
+    font-size: 12px;
+    color: black;
+}
+
+.paymentInfo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.pdf-global-block {
+    height: 70%;
+}
+
+.CGV {
+    font-size: 10px;
+    line-height: 1.1em;
+    color: grey;
+    margin-top: 10px;
+}
+
+.footer-center {
+    font-size: 10px;
+}
+
+.text-important {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.print-footer {
+    font-size: 10px;
+    text-align: justify;
+    color: grey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.block-border {
+    padding: 10px;
+    border: 1px solid darkgrey;
+}
+
+.address-letter {
+    font-size: 20px;
+}
+
+.ref-block {
+    font-size: 17px;
+}
+
+.css-bold {
+    font-weight: bold;
+}
+
+/**********************************
+ * Barcode specific
+ **********************************/
+
+.page-break-always {
+    page-break-after: always;
+}
+
+.big-header {
+    font-size: 5em;
+    font-weight: 600
+}
+
+.print-infos {
+    text-align: left;
+}
+
+.print-footer-barcode {
+    position: relative;
+    top: 180px;
+}
+
+.barcode-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.margin-left-20 {
+    margin-left: 20%;
+}
+
+.margin-left-15 {
+    margin-left: 15%;
+}
+
+.margin-left-6 {
+    margin-left: 6%;
+}
+
+/**********************************
+ * Knowledge
+ **********************************/
+
+body {
+    font-family: "Roboto", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #000;
+}
+
+.doc-a4 {
+    max-width: 21cm;
+}
+
+.doc-flit-header {
+    display: block;
+    background-origin: padding-box;
+    background: #3eb64a;
+    padding: 21px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.doc-flit-header address {
+    color: #fff;
+}
+
+.doc-flit-footer {
+    display: block;
+    background-origin: padding-box;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #3eb64a;
+
+    text-align: center;
+}
+
+.doc-flit-footer .company-name {
+    display: inline-block;
+}
+
+.img-header {
+    max-width: 85px;
+    max-height: 100px;
+
+    margin-left: 40px;
+    margin-right: 30px;
+}
+
+.media {
+    height: 100px;
+}
+
+.header-contacts {
+    text-align: left;
+}
+
+.header-contact {
+    margin-bottom: 10px;
+}
+
+.header-contact i {
+    margin-right: 5px;
+}
+
+.header-contact i.fa-envelope {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.company-name {
+    font-family: "Usuzi", "Roboto", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+#titleDocument {
+    color: #000;
+    font-size: 30pt;
+    text-align: center;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+#subtitleDocument {
+    font-size: 20pt;
+    color: gray;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+ul, ol {
+    font-size: 15pt;
+}
+
+.textDocument {
+    font-size: 15pt;
+}
+
+.textFooter {
+    font-size: 13pt;
+}
+
+.blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: 17pt;
+    border-left: none;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid black;
+}
+
+.knowledgeTables {
+    text-align: center;
+    font-size: 13pt;
+    color: #808080;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+p {
+    page-break-inside: avoid;
+}

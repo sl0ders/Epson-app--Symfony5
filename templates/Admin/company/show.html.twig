@@ -1,0 +1,287 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "company.title.show"|trans({ '%company%':  company.name }) }}{% endblock %}
+{% block menuActive_historic %}active{% endblock menuActive_historic %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="example-wrapper">
+                <div class="panel-body">
+                    <div class="row">
+                        {# Panel - Filters #}
+                        <div class="col-md-12 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <a class="collapse-link" title="{{ 'link.reducePanel'|trans }}">
+                                        <h5 class="text-black-50">{{ "company.title.show"|trans({ '%company%':  company.name }) }}</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"> </i>
+                                            </a>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="ibox-content">
+                                    <ul class="nav nav-tabs" id="companyTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="t-identity" data-bs-toggle="tab"
+                                               href="#tab-identity"
+                                               role="tab" aria-controls="tab-identity" aria-selected="true">
+                                                <i class="fa fa-id-badge"
+                                                   aria-hidden="true"> {{ 'form.tab.identity'|trans }}</i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="t-breakingUp" data-bs-toggle="tab"
+                                               href="#tab-breakingUp"
+                                               role="tab" aria-controls="tab-breakingUp" aria-selected="true">
+                                                <i class="fa fa-battery-quarter" aria-hidden="true">
+                                                    {{ 'form.tab.breakingUp'|trans }}</i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="t-address" data-bs-toggle="tab" href="#tab-address"
+                                               role="tab" aria-controls="tab-address" aria-selected="false">
+                                                <i class="fas fa-map-marker-alt">
+                                                    {{ 'form.tab.address'|trans }}
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="t-description" data-bs-toggle="tab"
+                                               href="#tab-description"
+                                               role="tab" aria-controls="tab-description" aria-selected="false">
+                                                <i class="fas fa-file-medical-alt">
+                                                    {{ 'form.tab.description'|trans }}
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="t-logo" data-bs-toggle="tab" href="#tab-logo"
+                                               role="tab" aria-controls="tab-logo" aria-selected="false">
+                                                <i class="fab fa-dyalog">
+                                                    {{ 'form.tab.logo'|trans }}
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="t-logo" data-bs-toggle="tab" href="#tab-printer"
+                                               role="tab" aria-controls="tab-printer" aria-selected="false">
+                                                <i class="fas fa-print" aria-hidden="true">
+                                                    {{ 'form.tab.printer'|trans }}
+                                                </i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="companyFormContent">
+                                        <div id="tab-identity" class="tab-pane fade show active" role="tabpanel"
+                                             aria-labelledby="t-identity">
+                                            <div class="border-left-right border-bottom p-3">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>{{ "company.label.code"|trans }}</th>
+                                                        <td>{{ company.code }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.name"|trans }}</th>
+                                                        <td>{{ company.name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.email"|trans }}</th>
+                                                        <td>{{ company.email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.phone"|trans }}</th>
+                                                        <td>{{ company.phone ? company.phone }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.isEnabled"|trans }}</th>
+                                                        <td style="display:flex; justify-content: space-between; align-items: center">
+                                                            {% if company.isEnabled %}
+                                                                <span class="fa fa-check" style="color: green"></span>
+                                                            {% else %}
+                                                                <span class="fa fa-times text-danger"></span>
+                                                            {% endif %}
+                                                            {% if company.isEnabled %}
+                                                                <a class="btn btn-primary"
+                                                                   href="{{ path('admin_company_enabled', {'id': company.id}) }}">
+                                                                    <i class="fa fa-toggle-off"></i>
+                                                                </a>
+                                                            {% else %}
+                                                                <a class="btn btn-danger"
+                                                                   href="{{ path('admin_company_enabled', {'id': company.id}) }}"><i
+                                                                            class="fa fa-toggle-on"></i></a>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.socialReason" | trans }}</th>
+                                                        <td>{{ company.socialReason }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.siren"|trans }}</th>
+                                                        <td>{{ company.siren }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.siret"|trans }}</th>
+                                                        <td>{{ company.siret }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.fax"|trans }}</th>
+                                                        <td>{{ company.fax }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{{ "company.label.website"|trans }}</th>
+                                                        <td>{{ company.website }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div id="tab-address" class="tab-pane fade" role="tabpanel"
+                                             aria-labelledby="t-address">
+                                            <div class="border-left-right border-bottom p-3">
+                                                <div class="border-left-right border-bottom p-3">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>{{ "addressableTrait.label.zipCode"|trans }}</th>
+                                                            <td>{{ company.zipCode }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "addressableTrait.label.city"|trans }}</th>
+                                                            <td>{{ company.zipCode }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "addressableTrait.label.country"|trans }}</th>
+                                                            <td>{{ company.zipCode }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "addressableTrait.label.street"|trans }}</th>
+                                                            <td>{{ company.zipCode }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "addressableTrait.label.streetNumber"|trans }}</th>
+                                                            <td>{{ company.zipCode }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "company.label.fullAdress"|trans }}</th>
+                                                            <td>{{ company.fullAddress }}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-breakingUp" class="tab-pane fade col-md-5 m-auto mt-5 border p-3"
+                                             role="tabpanel" aria-labelledby="t-breakingUp">
+                                            <h3 class="text-center">{{ "company.text.explainBreakingUp"|trans }}</h3>
+                                            <div class="p-3">
+                                                <div class="border-left-right border-bottom p-3">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>{{ "company.label.bacBreakingUpLvl"|trans }}</th>
+                                                            <td>{{ company.bacBreakingUpLvl }}%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "company.label.bacBreakingUpDays"|trans }}</th>
+                                                            <td>{{ company.inkBreakingUpDays }}J</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "company.label.inkBreakingUpLvl"|trans }}</th>
+                                                            <td>{{ company.inkBreakingUpLvl }}%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{{ "company.label.inkBreakingUpDays"|trans }}</th>
+                                                            <td>{{ company.inkBreakingUpDays }}J</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-description" class="tab-pane fade" role="tabpanel"
+                                             aria-labelledby="t-description">
+                                            <div class="border-left-right border-bottom p-3">
+                                                <div class="border-left-right border-bottom p-3">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>{{ "company.label.description"|trans }}</th>
+                                                            <td><p>{{ company.shortDescription }}</p></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-logo" class="tab-pane fade" role="tabpanel"
+                                             aria-labelledby="t-logo">
+                                            <div class="border-left-right border-bottom p-3">
+                                                <div class="border-left-right border-bottom p-3">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>{{ "company.label.logo"|trans }}</th>
+                                                            <td>
+                                                                {% if company.logo %}
+                                                                    <img src="{{ vich_uploader_asset(company, "logo") |imagine_filter("my_thumb") }}"
+                                                                         alt="">
+                                                                {% else %}
+                                                                    <i class="fas fa-building fa-5x mt-4" aria-hidden="true"></i>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab-printer" class="tab-pane fade" role="tabpanel"
+                                             aria-labelledby="t-printer">
+                                            <div class="border-left-right border-bottom p-3">
+                                                <div class="border-left-right border-bottom p-3">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>{{ "company.label.printers"|trans }}</th>
+                                                            <td>
+                                                                <ul class="d-flex justify-content-around">
+                                                                    {% for printer in company.printers %}
+                                                                        <a class="border p-3 text-center blue-hover text-decoration-none"
+                                                                           href="{{ path('user_printer_show', {'id': printer.id}) }}">
+                                                                            <ul class="p-0">
+                                                                                <li class="h5 list-unstyled text-center"> {{ printer.name }}</li>
+                                                                                <li class="list-unstyled ">{{ "printer.label.serialNumber"|trans }}
+                                                                                    : {{ printer.sn }}</li>
+                                                                                <li class="list-unstyled ">{{ "printer.label.mac"|trans }}
+                                                                                    : {{ printer.mac }}</li>
+                                                                                <li class="list-unstyled ">{{ "printer.label.model"|trans }}
+                                                                                    : {{ printer.des }}</li>
+                                                                                <li class="list-unstyled ">{{ "printer.label.firmwareVersion"|trans }}
+                                                                                    : {{ printer.swv }}</li>
+                                                                            </ul>
+                                                                        </a>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{{ path('admin_company_edit', {'id': company.id}) }}" class="btn-warning btn"><i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

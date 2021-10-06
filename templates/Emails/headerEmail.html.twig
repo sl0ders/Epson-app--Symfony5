@@ -1,0 +1,12 @@
+{# Css #}
+    {#- - Css stylesheet - -#}
+    {% block stylesheet %}
+        {% apply inline_css(source("base.html.twig")) %}
+            <div class="middle-box text-center loginscreen animated fadeInDown">
+                {% block epson_email %}{% endblock epson_email %}
+            </div>
+        {% endapply %}
+    {% endblock stylesheet %}
+
+
+

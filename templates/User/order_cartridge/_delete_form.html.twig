@@ -1,0 +1,6 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<form method="post" action="{{ path('user_order_cartridge_delete', {'id': order_cartridge.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order_cartridge.id) }}">
+    <button class="btn btn-danger">{{ "button.delete" |trans }}</button>
+</form>

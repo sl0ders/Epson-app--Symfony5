@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "order.cartridge.title.show"|trans }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <h1>{{ "order.cartridge.title.show"|trans }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>{{ "order.cartridge.label.orderCode"|trans }}</th>
+                <td>{{ order_cartridge.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ "order.cartridge.label.note"|trans }}</th>
+                <td>{{ order_cartridge.note }}</td>
+            </tr>
+            <tr>
+                <th>{{ "order.cartridge.label.orderDate"|trans }}</th>
+                <td>{{ order_cartridge.orderAt ? order_cartridge.orderAt|date('d/m/Y H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>{{ "order.cartridge.label.createdAt"|trans }}</th>
+                <td>{{ order_cartridge.createdAt ? order_cartridge.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>{{ "order.cartridge.label.state"|trans }}</th>
+                <td>{{ order_cartridge.state }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ app.request.headers.get('referer') }}"><i class="fas fa-arrow-left"></i></a>
+
+    <a href="{{ path('admin_order_cartridge_edit', {'id': order_cartridge.id}) }}"><i class="fas fa-edit"></i></a>
+
+    {{ include('Admin/order_cartridge/_delete_form.html.twig') }}
+{% endblock %}

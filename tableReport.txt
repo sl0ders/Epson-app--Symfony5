@@ -1,0 +1,12 @@
+Report
+	n°report (unique String)
+	companyId (company relation)
+	createdAt (datetime)
+	subject (enum string)
+	statut (boolean)
+
+MessageReport
+	sender (company relation)
+	createdAt (datetime)
+	message (text)
+	reportId (report relation)

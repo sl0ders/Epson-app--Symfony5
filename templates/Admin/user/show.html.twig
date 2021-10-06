@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "user.title.show"|trans({ '%email%':  user.email }) }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="example-wrapper">
+                <div class="panel-body">
+                    <div class="row">
+                        {# Panel - Users #}
+                        <div class="col-md-12 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5 class="text-black-50">{{ "user.title.show"|trans({ '%email%':  user.email }) }}</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content dataTables_wrappers">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th>{{ "user.label.fullname"|trans }}</th>
+                                            <td>{{ user.fullName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ "user.label.phone"|trans }}</th>
+                                            <td>{{ user.phone ? user.phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ "user.label.fullAdress"|trans }}</th>
+                                            <td>{{ user.fullAddress }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ "user.label.isEmailRecipient"|trans }}</th>
+                                            <td style="display:flex; justify-content: space-between; align-items: center">
+                                                {% if user.isEmailRecipient %}
+                                                    <span class="fa fa-check" style="color: green"></span>
+                                                {% else %}
+                                                    <span class="fa fa-times text-danger"></span>
+                                                {% endif %}
+                                                {% if user.isEmailRecipient %}
+                                                    <a class="btn btn-primary"
+                                                       href="{{ path('admin_user_isEmailRecipient', {'id': user.id}) }}">
+                                                        <i class="fa fa-toggle-off"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <a class="btn btn-danger"
+                                                       href="{{ path('admin_user_isEmailRecipient', {'id': user.id}) }}"><i
+                                                                class="fa fa-toggle-on"></i></a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ "user.label.roles"|trans }}</th>
+                                            <td>
+                                                {% for role in user.roles %}
+                                                    {{ role }} {% if user.roles|length > 1 %} , {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a class="btn btn-warning"
+                                       href="{{ is_granted("ROLE_ADMIN") ? path('admin_user_index') : path('user_parameter_index') }}">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </a>
+                                    <a class="btn btn-warning" href="{{ path('user_edit', {"id" : user.id}) }}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

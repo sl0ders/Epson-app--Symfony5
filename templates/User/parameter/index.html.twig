@@ -1,0 +1,114 @@
+{% extends "base.html.twig" %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}Paramètres{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block body %}
+    <div class="container">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row pb-5">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-12 m-5">
+                            <h1 class="text-center">{{ 'parameters.title'|trans }}</h1>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center">
+                            {#- - Param - Order Cartridge -         -#}
+                            <a class="col-md-2 border m-2 p-2 parameter text-decoration-none rounded link-unstyled"
+                               href="{{ path('user_order_cartridge_index') }}">
+                                <div class="orderCartridge">
+                                    <div class="panel-body text-center">
+                                        <i class="far fa-arrow-alt-circle-down fa-3x m-lg"></i>
+                                        <br>
+                                        <span class="h4">{{ 'entity.order.cartridge'|trans }}</span>
+                                        <br>
+                                        <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                    </div>
+                                </div>
+                            </a>
+                            {#- - End Param - Order Cartridge -         -#}
+                            {% if is_granted("ROLE_USER") %}
+                                {#- - Param - Notification -         -#}
+                                <a class="col-md-2 border m-2 p-2 parameter text-decoration-none rounded link-unstyled"
+                                   href="{{ path('user_notification_index') }}">
+                                    <div class="notification">
+                                        <div class="panel-body text-center">
+                                            <em class="fas fa-comment fa-3x m-lg"></em>
+                                            <br>
+                                            <span class="h4">{{ 'entity.notification'|trans }}</span>
+                                            <br>
+                                            <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {#- - End Param - Notification -   -#}
+                                {#- - Param - Report -         -#}
+                                <a class="col-md-2 border m-2 p-2 parameter text-decoration-none rounded link-unstyled"
+                                   href="{{ path('user_report_index') }}">
+                                    <div class="report">
+                                        <div class="panel-body text-center">
+                                            <i class="fas fa-exchange-alt fa-3x m-lg"></i>
+                                            <br>
+                                            <span class="h4">{{ 'entity.report'|trans }}</span>
+                                            <br>
+                                            <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {#- - End Param - Notification -   -#}
+                            {% endif %}
+
+                            {% if not is_granted("ROLE_ADMIN") %}
+                                {#- - Start Param - User -  -#}
+                                <a href="{{ path('user_show', {"id" : app.user.id }) }}"
+                                   class="text-decoration-none link-unstyled col-md-2 border rounded m-2  p-2 parameter">
+                                    <div class="user">
+                                        <div class="panel-body text-center">
+                                            <em class="far fa-user fa-3x m-lg"></em>
+                                            <br>
+                                            <span class="h4">{{ 'entity.user'|trans }}</span>
+                                            <br>
+                                            <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {#- - End Param - User -  -#}
+                            {% endif %}
+                            {% if is_granted("ROLE_ADMIN") %}
+                                {#- - Param - Company -         -#}
+                                <a class="col-md-2 border m-2 p-2 parameter text-decoration-none rounded link-unstyled"
+                                   href="{{ path('admin_company_index') }}">
+                                    <div class="company">
+                                        <div class="panel-body text-center">
+                                            <em class="far fa-building fa-3x m-lg"></em>
+                                            <br>
+                                            <span class="h4">{{ 'entity.company'|trans }}</span>
+                                            <br>
+                                            <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {#- - End Param - Company -         -#}
+                                {#- - Param - User -         -#}
+                                <a href="{{ path('admin_user_index') }}"
+                                   class="text-decoration-none link-unstyled col-md-2 border m-2 rounded p-2 parameter">
+                                    <div class="panel b">
+                                        <div class="panel-body text-center">
+                                            <em class="far fa-user fa-3x m-lg"></em>
+                                            <br>
+                                            <span class="h4">{{ 'entity.user'|trans }}</span>
+                                            <br>
+                                            <small class="text-muted">{{ 'parameters.seeList'|trans }} →</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {#- - End Param - User -         -#}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

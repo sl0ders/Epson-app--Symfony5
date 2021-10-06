@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+
+{% block title %}{{ "company.title.edit"|trans({"%company%": company.name}) }}{% endblock %}
+{% block menuActive_historic %}active{% endblock menuActive_historic %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/plugins/select2/select2.min.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {{ include('admin/company/_form.html.twig', {'button_label': 'button.update'|trans }) }}
+
+    <a class="btn btn-warning btn-sm mt-2" href="{{ path('admin_company_index') }}"><i class="fa fa-arrow-left"></i></a>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/select2/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,10 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        logo_company:
+            uri_prefix: '%app.path.company_logo%'
+            upload_destination: '%kernel.project_dir%/public/company/logo'
+
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

@@ -1,0 +1,412 @@
+placeholder:
+    choices: "Choisissez une option"
+printer:
+    states:
+        operational: "Fonctionnelle"
+        awaitingMaintenance: "En attente d'une maintenance"
+        broken: "En panne"
+    title:
+        add: "Ajouter"
+        index: 'Imprimante - index'
+        ink: "Detail encre - %printName%"
+        bac: "Niveau du bac de réception"
+        stats: "Statistiques d'impression - %printName%"
+        dateUpdate: 'Date du fichier'
+        company: 'Entreprise'
+        phaph: 'Graphique de statistique'
+        resume: 'Résumer des consommations'
+        delta: 'Delta de consommation'
+        consumable: 'Consommation'
+        show: 'Detail imprimante - %printName%'
+        average: 'Moyenne des Consommations'
+        cartridge:
+            lvl: "Niveau d'encre"
+            name: 'Nom de la cartouche'
+            size: 'Taille de la cartouche'
+        state:
+            ras: 'Rien a signalé sur cette imprimante'
+            problem: 'Cette imprimante est inactive depuis plus de 10 jours'
+        edit: "Édition de l'imprimante"
+        changeName: "Changement du nom de l'imprimante"
+    text:
+        add: 'Ajouter une imprimante'
+        notGoodFile: "Veuillez sélectionner le bon type de fichier"
+        selectXml: "Veuillez choisir un fichier xml"
+        stateChange: "Changement de status d'une imprimante"
+
+    btn:
+        changeState: "Modifier le statut de l'imprimante"
+        close: 'Fermer'
+        add: 'Télécharger le fichier xml'
+        addFile: 'Ajouter un fichier xml'
+        addOnfly: "Ajout d'une imprimante a la volée"
+
+    label:
+        addSubname: "Ajouter un surnom a l'imprimante"
+        model: 'Model'
+        printers: "Imprimantes"
+        name: "Nom de l'imprimante"
+        place: 'Emplacement'
+        ip: 'Adresse IP'
+        mac: 'Adresse MAC'
+        serialNumber: 'Numéro de série'
+        firmwareVersion: 'version du firmware'
+        save: "Sauvegarder"
+        dateStart: 'Date de debut'
+        dateEnd: 'Date de fin'
+        selectCompany: 'Entreprise'
+        all: "Selectionner toutes les imprimantes"
+        state: "État"
+        lastSync: 'Derniere synchronisation'
+        totalPrint: 'Total des impressions'
+        cartridgeState: "État des cartouches d'encre"
+        bacState: 'État du bac de récuperation'
+        action: 'Actions'
+        orderState: 'État des commandes'
+        subname: 'Nom attribué'
+    link:
+        show: "Visualiser l'imprimante"
+        delete: "Supprimer l'imprimante"
+
+    utilByDay: 'Utilisation Moyenne par jour'
+    utilToday: "Utilisation du jour"
+    print: 'Impressions'
+    colorInk: 'Encre %color%'
+    yellowInk: 'Encre jaune'
+    MagentaInk: 'Encre magenta'
+    CyanInk: 'Encre cyan'
+    InkColor: 'Encre %inkColor%'
+    restOnCartridge: "N° d'imp restante sur la cartouche"
+    restDay: 'Reste de jour hypothétique'
+    inkRest: 'Encre restant'
+    printN&W: 'Impressions N&B'
+    printC: 'Impressions Couleur'
+    ink:
+        almostEmpty: "Attention, la cartouche %color% sur l'imprimante %name% de l'entreprise %company% est approximativement a %daysInk% jours de sa fin."
+        InkLvlLow: "Attention, le niveau de la cartouche %color% sur l'imprimante %name% de l'entreprise %company% est de %restInk% %. soit approximativement %restDays% jours d'utilisation"
+    email:
+        cartridge:
+            smallAverage: " il reste environ %days% jours d'utilisation sur la cartouche n° %cartridge%. "
+            smallInk: " il reste Actuelement %restInk% % dans la cartouche n° %cartridge%. "
+            bacFull: " le bac de remplissage est actuelement a %bacFull% % sur l'imprimante %printer%. "
+            daysFullBac: " il reste environ %daysFullBac% jours d'utilisation de l'imprimande n° %printer% avant que le bac de remplissage ne soit plein."
+            title: "Cartouche"
+            numberSerie: "Numero de serie"
+            name: "Nom"
+            color: "Couleur"
+            size: "format de cartouche"
+        alert:
+            averageInk: "Alerte de jour restant sur cartouche d'encre."
+            restInk: "Alerte de niveau d'encre."
+            averageFullBac: "Alerte de jour restant avant bac plein."
+            fullBac: 'Alerte de niveau de bac.'
+        title: 'Imprimante :'
+        name: "Nom de l'imprimante"
+        numberSerie: "Numero de serie"
+        model: "modele de l'imprimante"
+        macAdresse: "Adresse Mac"
+    bac:
+        almostFull: "Attention, le bac de remplissage de l'imprimante %name% de l'entreprise %company% est approximativement a %daysBac% jours d'etre plein."
+        InkLvlFull: "Attention, le niveau du bac de remplissage de l'imprimante %name% de l'entreprise %company% est de %fullyBac% %."
+    state:
+        enabled: 'En fonction'
+        disabled: 'Inactive'
+        all: 'Tout'
+
+consumable:
+    label:
+        yellow: "Jaune"
+        cyan: "Cyan"
+        magenta: "Magenta"
+        black: "Noir"
+        A3M: "Format A3 noir et blanc"
+        A3C: "Format A3 couleur"
+        A3DC: "Format A3 RV couleur imprimées"
+        A3DM: "Format A3 RV N&B imprimées"
+        A4M: "Format A4 noir et blanc"
+        A4C: "Format A4 couleur"
+        A4DM: "Format A4 RV N&B imprimées"
+        A4DC: "Format A4 RV couleur imprimées"
+        PPT: "Total de page imprimées"
+        MPP: "Total de page Noir et Blanc Imprimées"
+        CPP: "Total de page Couleur imprimées"
+        MBR: "Remplissage du bac"
+        datatable:
+            a3m: "A3 N&B"
+            a3c: "A3 couleur"
+            a3dc: "A3 RV couleur"
+            a3dm: "A3 RV N&B"
+            a4m: "A4 N&B"
+            a4c: "A4 couleur"
+            a4dm: "A4 RV N&B"
+            a4dc: "A4 RV couleur"
+            ppt: "Total pages"
+            mpp: "Total pages N&B"
+            cpp: "Total pages Couleur"
+            mbr: "Remplissage du bac"
+            date: 'Date'
+        printName: "Nom de l'imprimante"
+    title:
+        index: 'Consommables - index'
+        filters: 'Filtre de recherche'
+        graph: 'Graphique lié a la recherche'
+        searchResult: 'Ligne lié a la recherche'
+link:
+    reducePanel: 'Réduire le panneau'
+    filter: 'Filtrer'
+
+login:
+    link:
+        rememberme: 'Se souvenir de moi'
+    title:
+        filters: "Filtres"
+        searchResult: 'Résultat de la recherche'
+        graph: 'Graphique'
+        connection: 'Page de connexion'
+    button:
+        connection: 'Connexion'
+        deconnection: "Déconnection"
+    label:
+        password: "Mot de passe"
+        email: "Adresse email"
+    placeholder:
+        password: "Entrez un mot de passe"
+        email: "Entrez votre adresse email"
+    message:
+        logged: 'Vous etes connecter en tant que %username%'
+        connection: 'Merci de vous connecter'
+    introduction: 'Connexion au back-office'
+    userExist: 'Vous êtes connecté en tant que'
+    logout: 'Se déconnecter'
+    legalMention: 'Tous droits réservés à GestEpson. © 2019-2021'
+notification:
+    label:
+        message: 'Message associé'
+        date: 'Date de notification'
+        company: 'Client'
+    link:
+        show: 'Visualiser'
+        delete: 'Supprimer'
+        state: 'État'
+        desarchived: 'Desarchivée'
+        archived: 'Archivée'
+    title:
+        index: 'Index des notifications'
+        show: 'Détail de la notification'
+    button:
+        archived: 'Archivées'
+        desarchived: 'Visible'
+        all: 'Tout'
+    parameters:
+        title: 'Paramètres des notifications'
+    printer:
+        notUsed: "Attention, Une anomalie sur l'imprimante %printer% de l'entreprise %company%, a été détecté, aucune donnée n'a été remonté depuis au moins 10 jours"
+    text:
+        seeNotificationObject: "Voir l'élément concerné"
+parameters:
+    title: 'Paramètres'
+    seeList: 'Voir la liste'
+meta:
+    description: "Logiciel de suivie d'imprimante Epson"
+entity:
+    notification: 'Notification'
+    user: 'Utilisateur'
+    company: 'Entreprise'
+    order:
+        cartridge: "Commande cartouche"
+    report: 'Signalement'
+user:
+    link:
+        show: "Visualiser l'utilisateur"
+        isNotEmailRecipient: "Bloquer les alertes d'email pour cette utilisateur"
+        isEmailRecipient: "Activer les alertes d'email pour cette utilisateur"
+    title:
+        index: 'Index des Utilisateurs'
+        email: 'Email utilisateurs'
+        isEmailRecipient: 'Alerte email'
+        roles: 'Roles des Utilisateurs'
+        company: "Entreprise de l'utilisateur"
+        new: "Création d'un utilisateur"
+        show: "Detail de l'utilisateur %email%"
+        edit: "Edition de l'utilisateur %user%"
+    button:
+        all: 'Tout'
+        isEmailRecipient: 'Alerté'
+        isNotEmailRecipient: 'Non alerté'
+    label:
+        firstname: "Prenom"
+        lastname: "Nom"
+        roles: "Rôles de l'utilsateur"
+        email: 'Adresse email'
+        isEmailRecipient: "Recoit les emails d'alerte encre faible"
+        fullname: 'Nom et prenom'
+        phone: 'Numero de telephone'
+        fullAdress: 'Adresse complete'
+        password: "Mot de passe"
+        repeatPassword: "Répeter le mot de passe"
+    login:
+        label:
+            password: "Mot de passe"
+            repeatPassword: "Répéter le mot de passe"
+    role:
+        admin: 'Administrateur'
+button:
+    save: 'Sauvegarder'
+    update: 'Mettre a jour'
+    delete: 'Supprimer'
+    new: 'Nouveau'
+    saveSignal: 'Sauvegader le signalement'
+    closeModal: "Fermer la modal"
+    return: 'Retour a la page précedente'
+text:
+    confirm:
+        delete: 'Etes vous sur de vouloir supprimer ?'
+    noRecordsFound: 'Aucun resultat'
+form:
+    tab:
+        identity: 'Identité'
+        address: 'Adresse'
+        description: 'Description'
+        adress: 'Adresse'
+        breakingUp: 'Point de rupture'
+        logo: "Logo de l'entreprise"
+        printer: 'Imprimantes'
+company:
+    label:
+        logo: "Logo de l'entreprise"
+        name: "Nom de l'entreprise"
+        isEnabled: "Activée"
+        email: "Adresse email"
+        phone: "Numero de telephone"
+        fax: "Fax"
+        website: "Site web"
+        socialReason: "raison social"
+        siren: "N° SIREN"
+        siret: "N° SIRET"
+        description: "Courte description"
+        fullname: 'Nominatif complet'
+        fullAdress: 'Adresse complete'
+        printers: "Imprimantes de l'entreprise"
+        bacBreakingUpDays: "Point de rupture bac de récupération jours restants"
+        bacBreakingUpLvl: "Point de rupture niveau de bac de récupération"
+        inkBreakingUpDays: "Point de rupture encre jours restants"
+        inkBreakingUpLvl: "Point de rupture niveau d'encre"
+        code: 'Code entreprise'
+    title:
+        edit: "Edition de l'entreprise %company%"
+        show: "Détail de l'entreprise %company%"
+        index: "Index des entreprises"
+    link:
+        show: 'Visualiser'
+        isEnable: 'désactivée'
+        desarchived: 'Activée'
+        edit: 'Éditer'
+    text:
+        explainBreakingUp: "Cette section détermine à quel niveau d'encre ou de bac collecteur vous souhaitez être notifiés."
+    search: 'Rechercher une entreprise'
+addressableTrait:
+    label:
+        zipCode: "Code postal"
+        city: "Ville"
+        country: "Pays"
+        street: "Rue"
+        streetNumber: "Numero de rue"
+layout:
+    link:
+        resume: 'Résumé'
+        printerList: 'Liste des imprimantes'
+        historic: 'Historique'
+        parameters: 'Paramètres'
+order:
+    button:
+        signal: 'Signaler une commande'
+    cartridge:
+        validateType:
+            reported: "Signalement d'une future commande"
+            inPreparation: "en cour de preparation"
+            sended: "envoyée"
+            commanded: "commandée"
+        type:
+            cartridgeReporte: "Signalement défaillance cartouche"
+            printerReporte: "Signalement défaillance imprimante"
+            sav: "Signalement suivie SAV"
+        title:
+            modal: "Commande d'une cartouche"
+            edit: "Édition de la commande de cartouche n°%orderCode%"
+            index: 'Index des commandes de cartouche'
+            new: "Création d'une commande de cartouche"
+            show: 'Visualisation de la commande %orderNumber%'
+            showByCartridge: 'Liste des commandes de cartouche %cartridgeName%'
+        label:
+            note: "Note sur la commande"
+            orderDate: "Date de commande :"
+            state: "Etat de la commande"
+            types: "Type de Signalement"
+            cartridge: "Cartouche visée"
+            client: "Entreprise visée"
+            printer: "Imprimante visé"
+            createdAt: 'Bon créer le :'
+            orderCode: 'Code de commmande'
+            quantity: "Quantité"
+            orderer: 'Auteur de la commande'
+        orderer: 'Commandé'
+        ordere: "Commande de cartouche d'encre"
+        orderCartridge: "Commande d'une cartouche"
+        link:
+            show: 'Visualiser la commande'
+            print: 'Imprimer la commande'
+        button:
+            changeState: 'Modifier le statut de la commande'
+        new: 'Une nouvelle commande de cartouche %cartridge% par la société %company% est arrivé. code : %orderCode%'
+        state: 'État de la commande n°%orderCode% concernant les cartouches %cartridge%.'
+        changeState:
+            notification: 'La commande %orderCode% comprenant %nbCartridge% X %cartridge% est %state%.'
+            email:
+                title: "Changement d'état de la commande %orderCode%"
+                text: "Bonne nouvelle, la commande %orderCode% est %state%, elle comprend %nbCatridge% cartouche %cartridge%"
+        email:
+            subject: "Nouvelle commande de %company% concernant %nbOrder% %cartridge%"
+            title: 'Commande de cartouche %cartridge%'
+            text: "Une commande de %nbOrder% X %cartridge% a été demandé par l'entreprise %company%. numero de commande : %orderCode% "
+            note: 'Une note a été adressé:'
+        notFound: 'Aucune commande'
+cartridge:
+    label:
+        name: 'Intitulé'
+        size: 'Taille'
+        color: 'Couleur'
+        printAverage: "Moyenne d'impression par cartouche"
+        restInk: 'Encre restant'
+        restPrint: 'Impression restant'
+    email:
+        title: 'Détails de la cartouche commandée'
+report:
+    subject:
+        print: "Imprimante"
+        ink: "Cartouche d'encre"
+        order: "Commande"
+    show:
+        title: 'Détail du rapport n°%reportCode%'
+    messageReport:
+        createdSuccessfully: "Le message a bien été transmit, il est maintenant en attente de lecture"
+    label:
+        reportCode: 'Code de signalement'
+        date: 'Date de signalement'
+        company: 'Entreprise'
+        subject: 'Sujet'
+    link:
+        show: 'Visualiser'
+        archived: 'Archiver'
+        desarchived: 'Desarchiver'
+    title:
+        index: 'Index des Signalements'
+        new: "Creation d'un nouveau signalement"
+    notification:
+        subject: "Un nouveau message a été posté sur le signalement n°%code% de l'entreprise %company%"
+        message: "Un nouveau message a été posté sur le signalement n°%code% de l'entreprise %company%"
+    message:
+        email:
+            title: 'Message'
+parkState:
+    index:
+        title: 'État des imprimantes de toutes les entreprises'

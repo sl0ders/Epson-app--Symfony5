@@ -1,0 +1,12 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+{{ form_start(form) }}
+{{ form_row(form.orderCode) }}
+{{ form_row(form.orderAt) }}
+{{ form_row(form.client) }}
+{{ form_row(form.printer) }}
+{{ form_row(form.cartridge) }}
+{{ form_row(form.quantity) }}
+{{ form_row(form.note) }}
+{{ form_row(form.state) }}
+<button class="btn btn-success">{{ button_label|default("button.save"|trans) }}</button>
+{{ form_end(form) }}

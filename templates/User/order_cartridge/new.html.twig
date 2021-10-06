@@ -1,0 +1,8 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+{% extends "base.html.twig" %}
+
+{% block title %}{{ "order.cartridge.title.new"|trans }}{% endblock %}
+
+{% block body %}
+    {{ include('User/order_cartridge/_form.html.twig') }}
+{% endblock %}

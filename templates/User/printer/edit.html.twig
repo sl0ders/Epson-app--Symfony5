@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "printer.title.edit"|trans }}{% endblock %}
+{% block menuActive_printerList %}active{% endblock menuActive_printerList %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="container">
+        <div class="card col-md-5 offset-3">
+            <div class="card-header">
+                <div class="card-title text-center">
+                        <div>{{ form_label(form.subname) }}</div>
+                        <div>{{ form_widget(form.subname) }}</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody class="col-md-5 offset-3">
+                    <tr>
+                        <th>{{ "printer.label.name"|trans }}</th>
+                        <td>{{ printer.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ "printer.label.place"|trans }}</th>
+                        <td>{{ printer.office }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ "printer.label.mac"|trans }}</th>
+                        <td>{{ printer.mac }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ "printer.label.model"|trans }}</th>
+                        <td>{{ printer.des }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ "printer.label.serialNumber"|trans }}</th>
+                        <td>{{ printer.sn }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+

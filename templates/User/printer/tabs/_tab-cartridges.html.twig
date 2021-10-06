@@ -1,0 +1,97 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="ibox float-e-margins col-md-12">
+                    <div class="ibox-title">
+                        <h5 class="text-black-50">{{ "printer.title.average" | trans }}</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"> </i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            <div class="containerAverage">
+                                <table class="table text-center">
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>{{ "printer.utilToday" | trans }}</td>
+                                        <td>{{ "printer.utilByDay"| trans }}</td>
+                                        <td>{{ "printer.restOnCartridge"| trans }}</td>
+                                        <td>{{ "printer.restDay"| trans }}</td>
+                                    </tr>
+                                    {% if consumableToday %}
+                                        <tr>
+                                            <td>{{ "printer.print" | trans }}</td>
+                                            <td>{{ consumableToday.PPTdelta }}</td>
+                                            <td>{{ average.useByDay }}</td>
+                                            <td></td>
+                                        </tr>
+                                        {% for cartridge in cartridges %}
+                                            <tr>
+                                                <td>{{ "printer.colorInk" | trans({"%color%": cartridge.color}) }}</td>
+                                                <td>{{ consumableToday.blackdelta }}%</td>
+                                                <td>{{ cartridge.useByDay }}%</td>
+                                                <td>{{ cartridge.restPrints }}</td>
+                                                <td>{{ cartridge.restDays }}J</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p class="text-center">Pas assez de données</p>
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="ibox float-e-margins col-md-12">
+                    <div class="ibox-title">
+                        <h5 class="text-black-50">{{ "printer.title.ink"|trans({'%printName%': printer.sn}) }}</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"> </i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="wrapper wrapper-content animated fadeInRight">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <table class="table text-center">
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>{{ "printer.title.cartridge.name"| trans }}</td>
+                                                <td>{{ "printer.title.cartridge.size"| trans }}</td>
+                                            </tr>
+                                            {% for cartridge in cartridges %}
+                                                <tr class="mt-2">
+                                                    <td>{{ cartridge.name }}</td>
+                                                    <td>{{ cartridge.size }}</td>
+                                                    <td class="border col-1 rounded-1 text-center {{ cartridge.color|lower }}-bg" style="height: 60px; background: linear-gradient( white {{ 100 - cartridge.restInkPercent  }}%, {{ cartridge.color|lower }} 90%); color: #292c5d">{{ cartridge.restInkPercent }}
+                                                        %
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                        <h4 class="text-center mt-md">{{ "printer.title.bac" | trans }}</h4>
+                                        <div class="ink baclvl-bg" style="height: 60px; background: linear-gradient( white {{ 100 - bacLvl }}%, {{ bacLvl }} 90%); color: #292c5d">{{ bacLvl }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    {#-- Translation domain --#}
+    {% trans_default_domain 'EpsonProjectTrans' %}
+
+    {#-- Meta datas --#}
+    {% block epson_meta %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock epson_meta %}
+
+    {#-- Title page --#}
+    <title>{% block epson_title %}{% endblock epson_title %}</title>
+
+    {# Css #}
+    {#-- Css stylesheet --#}
+    {% block stylesheet %}
+        <link href="{{ asset('bootstrap-5.0.0/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    {% endblock stylesheet %}
+
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
+</head>
+
+<body class="login-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    {% block epson_loginForm %}{% endblock epson_loginForm %}
+</div>
+
+{% block javascript %}
+    {#-- Mainly scripts --#}
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('bootstrap-5.0.0/dist/js/bootstrap.min.js') }}"></script>
+{% endblock javascript %}
+
+</body>
+</html>

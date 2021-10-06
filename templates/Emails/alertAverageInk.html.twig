@@ -1,0 +1,87 @@
+{% trans_default_domain "EpsonProjectTrans" %}
+{% extends "emails/headerEmail.html.twig" %}
+{% block epson_email %}
+<h1 class="text-center">
+    le : {{ 'now'|date("d/m/Y") }} <br>
+
+    {% if inkEmptyDays is defined %}
+        {{ "printer.email.cartridge.smallAverage"|trans({"%days%": cartridge.restDays, "%cartridge%": cartridge.serialNumber}) }}
+    {% endif %}
+
+    {% if inkEmptyPercent is defined %}
+        {{ "printer.email.cartridge.smallInk"|trans({"%restInk%": cartridge.restInkPercent, "%cartridge%": cartridge.serialNumber}) }}
+    {% endif %}
+
+    {% if bacFullDays is defined %}
+        {{ "printer.email.cartridge.daysFullBac"|trans({"%daysFullBac%": average.restDays, "%printer%": printer.name}) }}
+    {% endif %}
+
+    {% if bacFullPercent is defined %}
+        {{ "printer.email.cartridge.bacFull"|trans({"%bacFull%": average.useByDay,"%printer%": printer.name}) }}
+    {% endif %}
+
+    {% if orderStatutChange is defined %}
+        {{ "order.cartridge.changeState.email.title"|trans({"%orderCode%": order.orderCode}) }}
+    {% endif %}
+</h1>
+
+{% if bacFullDays is defined or bacFullPercent is defined %}
+    <h2>{{ "printer.title.company"|trans }} : {{ printer.company.name }}</h2>
+{% endif %}
+
+    {% if newCartridgeOrder is defined %}
+        <h1>{{ "order.cartridge.email.title"|trans({"%cartridge%" : cartridge.name}) }}</h1>
+        <p>{{ "order.cartridge.email.text"|trans({"%nbOrder%": order.quantity, "%orderCode%": order.orderCode,"%cartridge%": cartridge.name, "%company%":order.client.name}) }}</p>
+    {% endif %}
+
+    {% if notUsed is defined %}
+        {{ "notification.printer.notUsed"|trans({"%printer%": printer.name, "%company%": printer.company}) }}
+    {% endif %}
+
+    {% if reportSendMail is defined %}
+        {{ "report.notification.message" |trans({"%company%": report.getCompany(), "%code%" : report.getReportCode() }) }}
+    {% endif %}
+
+    {% if orderStatutChange is defined %}
+        {{ "order.cartridge.changeState.email.text"|trans({"%orderCode%": order.orderCode,"%state%": state, "%nbCatridge%": order.quantity, "%cartridge%": order.cartridge.name }) }}
+    {% endif %}
+<div class="text-center">
+    <ul>
+        {% if inkEmptyDays is defined or inkEmptyPercent is defined or notUsed is defined and cartridge is defined %}
+            <li>{{ "printer.email.name"|trans }} : {{ cartridge.printer.name }}</li>
+            <li>{{ "printer.email.numberSerie"|trans }} : {{ cartridge.printer.sn }}</li>
+            <li>{{ "printer.email.model"|trans }} : {{ cartridge.printer.des }}</li>
+            <li>{{ "printer.email.macAdresse"|trans }} : {{ cartridge.printer.mac }}</li>
+
+            <h3>{{ "printer.email.cartridge.title"|trans }} : </h3>
+            <li>{{ "printer.email.cartridge.numberSerie" | trans }} : {{ cartridge.serialNumber }}</li>
+            <li>{{ "printer.email.cartridge.name" | trans }} : {{ cartridge.name }}</li>
+            <li>{{ "printer.email.cartridge.color" | trans }} : {{ cartridge.color }}</li>
+            <li>{{ "printer.email.cartridge.size" | trans }} : {{ cartridge.size }}</li>
+
+        {% elseif orderStatutChange is defined %}
+            <h3>{{ "cartridge.email.title"|trans }}</h3>
+            <li>{{ "cartridge.label.name"|trans }} : {{ order.cartridge.name }}</li>
+            <li>{{ "cartridge.label.size"|trans }} : {{ order.cartridge.size }}</li>
+            <li>{{ "cartridge.label.color"|trans }} : {{ order.cartridge.color }}</li>
+            <li>{{ "cartridge.label.printAverage"|trans }} : {{ order.cartridge.printAverage }} imp</li>
+        {% elseif newCartridgeOrder is defined %}
+            {% if order.note %}
+                <p style="text-align: center">
+                    {{ "order.cartridge.email.note"|trans }} <br>
+                    {{ order.note }}
+                </p>
+            {% endif %}
+        {% elseif reportSendMail is defined %}
+            <h3>{{ "report.message.email.title"|trans }}</h3>
+            <p>{{ message.message }}</p>
+        {% else %}
+            <h3>{{ "printer.email.title"|trans }}</h3>
+            <li>{{ "printer.email.name"|trans }} : {{ printer.name }}</li>
+            <li>{{ "printer.email.numberSerie"|trans }} : {{ printer.sn }}</li>
+            <li>{{ "printer.email.model"|trans }} : {{ printer.des }}</li>
+            <li>{{ "printer.email.macAdresse"|trans }} : {{ printer.mac }}</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain "EpsonProjectTrans" %}
+{% block title %}{{ "user.title.edit"|trans({"%user%": user.email}) }}{% endblock %}
+{% block menuActive_parameter %}active{% endblock menuActive_parameter %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/plugins/select2/select2.min.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>{{ "user.title.edit"|trans({"%user%": user.email}) }}</h1>
+
+    {{ include('admin/user/_form.html.twig', {'button_label': 'button.update'|trans , "edit": true}) }}
+
+    <a class="btn btn-warning btn-sm mt-2" href="{{ is_granted("ROLE_ADMIN") ? path('admin_user_index') : path('user_parameter_index')}}"><i class="fa fa-arrow-left"></i></a>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/select2/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+{% endblock %}

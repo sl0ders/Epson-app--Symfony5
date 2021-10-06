@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7fc5078a-1ef7-47ff-bbd2-458dbceaa263" name="Epson-project" url="">
+        <fileTransfer rootFolder="/Epson-Project" accessType="SFTP" host="home756786028.1and1-data.host" port="22" sshConfigId="509fd0bd-1937-4290-9936-4a1cdc1be52f" sshConfig="u95153084@home756786028.1and1-data.host:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
